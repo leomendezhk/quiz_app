@@ -1,4 +1,3 @@
-
 # Quiz App Project - Computer Science
 
 Welcome to the Quiz App project for computer science! This readme will guide you through setting up and understanding this educational and entertaining application.
@@ -11,10 +10,6 @@ Welcome to the Quiz App project for computer science! This readme will guide you
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Dependencies](#dependencies)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -44,4 +39,3 @@ Register an account or log in to start taking quizzes.
 Answer the 10 computer science questions.
 Check your score at the end of the quiz.
 Your score will be saved and displayed in your profile.
-
