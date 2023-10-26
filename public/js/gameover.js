@@ -15,13 +15,13 @@ username.addEventListener("keyup", () => {
   saveScoreBtn.disabled = !username.value;
 });
 
-saveHighScore = e => {
+saveHighScore = (e) => {
   console.log("clicked the save button!");
   e.preventDefault();
 
   const score = {
     score: mostRecentScore,
-    name: username.value
+    name: username.value,
   };
   highScores.push(score);
   // sort the scores in ascending order

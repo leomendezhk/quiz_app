@@ -1,8 +1,11 @@
+// Get references to HTML elements
 const question = document.getElementById("question");
 const choices = Array.from(document.getElementsByClassName("choice-text"));
 const progressText = document.getElementById("progressText");
 const scoreText = document.getElementById("score");
 const progressBarFull = document.getElementById("progressBarFull");
+
+// Initialize variables for the quiz game
 let currentQuestion = {};
 let acceptingAnswers = false;
 let score = 0;
@@ -10,7 +13,7 @@ let questionCounter = 0;
 let availableQuesions = [];
 let Questions = " ";
 
-// check the category & assign the json file accordingly
+// Check the category and assign the JSON file accordingly
 window.onload = function () {
   if (document.title == "General Knowledge") {
     Questions = "GK.json";
@@ -24,20 +27,20 @@ window.onload = function () {
   }
 };
 
-// intitialize the json file and start the game
+// Initialize the quiz by fetching questions from a JSON file
 initialize = () => {
   fetch(Questions)
     .then((res) => {
       return res.json();
     })
     .then((loadedQuestions) => {
-      console.log(loadedQuestions.results);
+      // Process loaded questions from the JSON file
       questions = loadedQuestions.results.map((loadedQuestion) => {
         const formattedQuestion = {
           question: loadedQuestion.question,
         };
 
-        // formatting the json file questions as per the choices layout
+        // Format the questions and answer choices
         const answerChoices = [...loadedQuestion.incorrect_answers];
         formattedQuestion.answer = Math.floor(Math.random() * 3) + 1;
         answerChoices.splice(
@@ -52,16 +55,20 @@ initialize = () => {
 
         return formattedQuestion;
       });
+
+      // Start the game after loading questions
       startGame();
     })
     .catch((err) => {
       console.error(err);
     });
 };
-//CONSTANTS
+
+// Constants
 const CORRECT_BONUS = 10;
 const MAX_QUESTIONS = 10;
 
+// Start the quiz game
 startGame = () => {
   questionCounter = 0;
   score = 0;
@@ -69,15 +76,15 @@ startGame = () => {
   getNewQuestion();
 };
 
+// Get a new question and update the quiz interface
 getNewQuestion = () => {
   if (availableQuesions.length === 0 || questionCounter >= MAX_QUESTIONS) {
+    // Store the score and go to the game over page
     localStorage.setItem("mostRecentScore", score);
-    //go to the gameover page
     return window.location.replace("../pages/gameover.html");
   }
   questionCounter++;
-  progressText.innerText = `Question ${questionCounter} /   ${MAX_QUESTIONS}`;
-  //Update the progress bar
+  progressText.innerText = `Question ${questionCounter} / ${MAX_QUESTIONS}`;
   progressBarFull.style.width = `${(questionCounter / MAX_QUESTIONS) * 100}%`;
 
   const questionIndex = Math.floor(Math.random() * availableQuesions.length);
@@ -93,6 +100,7 @@ getNewQuestion = () => {
   acceptingAnswers = true;
 };
 
+// Event listeners for user's choice selection
 choices.forEach((choice) => {
   choice.addEventListener("click", (e) => {
     if (!acceptingAnswers) return;
@@ -104,7 +112,7 @@ choices.forEach((choice) => {
     const classToApply =
       selectedAnswer == currentQuestion.answer ? "correct" : "incorrect";
 
-    // based on the input incement or decrement the score
+    // Update the score based on the user's choice
     if (classToApply === "correct") {
       incrementScore(CORRECT_BONUS);
     } else if (classToApply === "incorrect") {
@@ -120,11 +128,13 @@ choices.forEach((choice) => {
   });
 });
 
+// Function to increment the score
 incrementScore = (num) => {
   score += num;
   scoreText.innerText = score;
 };
 
+// Function to decrement the score
 decrementScore = (num) => {
   score -= num - 5;
   scoreText.innerText = score;

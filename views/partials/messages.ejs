@@ -1,29 +1,55 @@
-<% if(typeof errors != 'undefined'){ %> <% errors.forEach(function(error) { %>
+<% if(typeof errors != 'undefined'){ %>
+<!-- Check if 'errors' array is defined -->
+<% errors.forEach(function(error) { %>
+<!-- Loop through each error in the 'errors' array -->
 <div class="alert alert-warning alert-dismissible fade show" role="alert">
   <%= error.msg %>
+  <!-- Display the error message -->
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
+    <!-- Close button for the alert -->
   </button>
 </div>
-<% }); %> <% } %> <% if(success_msg != ''){ %>
+<% }); %>
+<!-- End of the error message loop -->
+<% } %>
+<!-- End of error message block -->
+
+<% if(success_msg != ''){ %>
+<!-- Check if 'success_msg' is not empty -->
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   <%= success_msg %>
+  <!-- Display the success message -->
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<% } %> <% if(error_msg != ''){ %>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <%= error_msg %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-<% } %> <% if(error != ''){ %>
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <%= error %>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
+    <!-- Close button for the success alert -->
   </button>
 </div>
 <% } %>
+<!-- End of success message block -->
+
+<% if(error_msg != ''){ %>
+<!-- Check if 'error_msg' is not empty -->
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= error_msg %>
+  <!-- Display the error message -->
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    <!-- Close button for the error alert -->
+  </button>
+</div>
+<% } %>
+<!-- End of error message block -->
+
+<% if(error != ''){ %>
+<!-- Check if 'error' is not empty -->
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+  <%= error %>
+  <!-- Display the error message -->
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    <!-- Close button for the error alert -->
+  </button>
+</div>
+<% } %>
+<!-- End of error message block -->
