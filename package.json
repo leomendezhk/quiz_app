@@ -1,11 +1,31 @@
 {
-  "name": "quiz_app",
-  "version": "1.0.0",
-  "description": "Quiz App Xccelerate",
-  "main": "index.js",
+  "name": "quiz-app-cs",
+  "version": "2.0.0",
+  "description": "Quiz app Xccelerate",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
+  "keywords": [],
   "author": "Leo Mendez",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.2.4",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.9",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.15.6",
+    "mongodb": "^6.2.0",
+    "mongoose": "^5.7.5",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
 }
